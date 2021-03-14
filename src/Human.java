@@ -1,43 +1,60 @@
-
-// 1) класс Human (int age, String firstName, String
-//lastName, LocalDate birthDate, int weight); Фильтрация по признаку «вес больше, чем возраст», сортировка по
-//фамилии в обратном порядке, сумма всех весов.//
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.stream.*;
 
 public class Human {
-    int age;
-    String firstName;
-    String lastName;
-    LocalDate birthDate;
-    int weight;
-    int[] resultArray = new int[]{};
+    private int age, weight;
+    private String firstName, lastName;
+    private LocalDate date;
 
-    public Human(int age, int weight) {
+    public Human(int age, String firstName, String lastName, LocalDate birthDate, int weight) {
         this.age = age;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.date = birthDate;
         this.weight = weight;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public int getAge() {
+        return age;
     }
 
     public void setAge(int age) {
         this.age = age;
     }
 
-    void ageFilter(int age, int weight) {
-        int[] ageArray = new int[]{};
-        for (int i = 0; i < 4; i++) {
-            ageArray[i] = age;
-        }
-        int[] weightArray = new int[]{};
-        for (int i = 0; i < 4; i++) {
-            weightArray[i] = age;
-        }
-        IntStream weightStream = Arrays.stream(weightArray);
-        IntStream ageStream = Arrays.stream(ageArray);
-        ageStream.filter(x -> weightArray[x] > x).forEach(System.out::println);
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public LocalDate getBirthDate() {
+        return date;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Имя: "+firstName + ' ' + lastName + ", Возраст: " + age +", дата рождения: " + date + ", Вес:" + weight;
     }
 }
